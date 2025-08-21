@@ -76,7 +76,6 @@ Example interaction with the Nithi bot.
 ## 📦 Setup
 
 1. **Clone the Repository**:
-2. 
    ```bash
  https://github.com/Dineshmanchala19/NITHI-BOT.git
  
