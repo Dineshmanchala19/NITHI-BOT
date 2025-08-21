@@ -76,9 +76,10 @@ Example interaction with the Nithi bot.
 ## 📦 Setup
 
 1. **Clone the Repository**:
-   ```bash
+ ```bash
  https://github.com/Dineshmanchala19/NITHI-BOT.git
- 
+ ```
+```bash
 Run n8n in Docker (Recommended):
 bashdocker run -it --rm \
   -p 5678:5678 \
@@ -88,6 +89,7 @@ bashdocker run -it --rm \
   -e MISTRAL_API_KEY=your_mistral_api_key \
   n8nio/n8n
 ```
+```bash
 Access n8n Dashboard: Open http://localhost:5678.
 Import Workflow:
 
@@ -127,3 +129,4 @@ Get real-time, AI-generated responses.
 
 📜 License
 MIT License
+```
