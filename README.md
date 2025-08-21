@@ -45,13 +45,7 @@ The workflow includes Telegram triggers, Mistral LLM, and AI agent nodes.
 ### 📱 Telegram Chat
 Example interaction with the Nithi bot.
 
-![Nithi Chat](screenshots/3.png)
-
-**How to Capture**:
-1. Start a chat with your bot (e.g., `@NithiBot`) on Telegram.
-2. Send messages like “Who are you?” or “What can you do?”.
-3. Take a screenshot in the Telegram app or web interface.
-4. Save as `screenshots/nithi-chat.png` in your repository.
+![Nithi Chat](screenshots/1.png)
 
 ---
 
