@@ -1,0 +1,180 @@
+{
+  "name": "Asisistant",
+  "nodes": [
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -752,
+        32
+      ],
+      "id": "fb20ae01-6430-41fd-93ad-3fb8a7ba65d9",
+      "name": "Telegram Trigger",
+      "webhookId": "22d81d0d-a209-4977-a17d-57ee6a11e58e",
+      "credentials": {
+        "telegramApi": {
+          "id": "ULLQoCoVbBcACEg9",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }}",
+        "options": {
+          "systemMessage": "=You are a personal assistant that helps user to fulfil their requests.\n\nwhen your asked to perform tasks on current date,please use current time and date: {{ $now }}\n\n##output\n\nyou should output the result and don't include anything unnecessary.Just make sure that you politely answer the question and aks if anyother information required."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 2.2,
+      "position": [
+        -272,
+        -144
+      ],
+      "id": "c64080d0-72c2-472e-8f8f-d2fd66dfc362",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b37d781-7dea-4cd2-a216-9f71d0a49fe3",
+              "name": "message.text",
+              "value": "={{ $json.message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "89d38dbb-ae9f-446b-ba7d-0ced98912ed5",
+              "name": "message.chat.id",
+              "value": "={{ $json.message.chat.id }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -544,
+        -112
+      ],
+      "id": "19507c5c-2448-4944-a256-67ed935a2848",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatMistralCloud",
+      "typeVersion": 1,
+      "position": [
+        -416,
+        64
+      ],
+      "id": "e0c15d7e-2671-4ecb-8c01-5faf0be70022",
+      "name": "Mistral Cloud Chat Model",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "24fWePMlIBrfktiO",
+          "name": "Mistral Cloud account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger').item.json.message.chat.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        80,
+        -144
+      ],
+      "id": "5c8f89fc-7a73-4eec-ad55-6d78cc2cc942",
+      "name": "Send a text message",
+      "webhookId": "72bd17a2-101e-4feb-9dee-808177f18bf0",
+      "credentials": {
+        "telegramApi": {
+          "id": "ULLQoCoVbBcACEg9",
+          "name": "Telegram account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Mistral Cloud Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "4f002f32-6bf6-4a57-a4e9-5a245ffad610",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ddb73e5557a40b687109841dc42a19ebfd00ba7eaafd476ec4b77b454c725529"
+  },
+  "id": "mufzTgBYeXdeRdjB",
+  "tags": [
+    {
+      "createdAt": "2025-08-21T08:53:29.174Z",
+      "updatedAt": "2025-08-21T08:53:29.174Z",
+      "id": "ukkH3HlTgebJaBXG",
+      "name": "telegram"
+    }
+  ]
+}
