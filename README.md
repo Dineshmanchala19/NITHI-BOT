@@ -76,11 +76,10 @@ Example interaction with the Nithi bot.
 ## 📦 Setup
 
 1. **Clone the Repository**:
+2. 
    ```bash
  https://github.com/Dineshmanchala19/NITHI-BOT.git
-
-
-```bash
+ 
 Run n8n in Docker (Recommended):
 bashdocker run -it --rm \
   -p 5678:5678 \
