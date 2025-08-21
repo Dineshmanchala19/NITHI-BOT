@@ -27,8 +27,6 @@
 
 
 
-![Nithi Telegram Chat](screenshots/3.png)
-
 ---
 
 ## 🧪 Sample Outputs
@@ -47,7 +45,7 @@ The workflow includes Telegram triggers, Mistral LLM, and AI agent nodes.
 ### 📱 Telegram Chat
 Example interaction with the Nithi bot.
 
-![Nithi Chat](screenshots/nithi-chat.png)
+![Nithi Chat](screenshots/3.png)
 
 **How to Capture**:
 1. Start a chat with your bot (e.g., `@NithiBot`) on Telegram.
@@ -79,8 +77,10 @@ Example interaction with the Nithi bot.
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/username/nithi
+ https://github.com/Dineshmanchala19/NITHI-BOT.git
 
+
+```bash
 Run n8n in Docker (Recommended):
 bashdocker run -it --rm \
   -p 5678:5678 \
@@ -89,7 +89,7 @@ bashdocker run -it --rm \
   -e TELEGRAM_BOT_TOKEN=your_telegram_token \
   -e MISTRAL_API_KEY=your_mistral_api_key \
   n8nio/n8n
-
+```
 Access n8n Dashboard: Open http://localhost:5678.
 Import Workflow:
 
